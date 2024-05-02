@@ -3,21 +3,29 @@ POST http://localhost:3000/items
 Content-Type: application/json
 
 {
-    "name": "Jane Doe2",
+    "name": "Jane Doe3",
     "public": "true",
     "listing": {
         "description": "This is a test listing"
-    }
+    },
+    "tags": [
+        {
+            "content" : "tag1"
+        },
+        {
+            "content" : "tag2"
+        }
+    ]
 }
 
 ### Get all items
 GET http://localhost:3000/items
 
 ### Get a single item
-GET http://localhost:3000/items/4
+GET http://localhost:3000/items/5
 
 ### Update an item
-PATCH http://localhost:3000/items/4
+PATCH http://localhost:3000/items/5
 Content-Type: application/json
 
 {

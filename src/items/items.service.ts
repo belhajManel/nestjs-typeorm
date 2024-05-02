@@ -6,6 +6,7 @@ import { Item } from './entities/item.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Listing } from './entities/listing.entity';
 import { Comment } from './entities/comment.entity';
+import { Tag } from './entities/tag.entity';
 @Injectable()
 export class ItemsService {
   constructor(
@@ -17,10 +18,12 @@ export class ItemsService {
       ...createItemDto.listing,
       rating: 0,
     });
+    const tags = createItemDto.tags.map((tag) => new Tag(tag));
     const item = new Item({
       ...createItemDto,
       comments: [],
       listing,
+      tags,
     });
     await this.entityManager.save(item);
   }
@@ -32,7 +35,7 @@ export class ItemsService {
   findOne(id: number) {
     return this.itemsRepository.findOne({
       where: { id },
-      relations: { listing: true, comments: true },
+      relations: { listing: true, comments: true, tags: true },
     });
   }
 

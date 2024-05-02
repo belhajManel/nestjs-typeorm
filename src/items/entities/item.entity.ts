@@ -2,12 +2,15 @@ import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Listing } from './listing.entity';
 import { Comment } from './comment.entity';
+import { Tag } from './tag.entity';
 @Entity()
 export class Item {
   @PrimaryGeneratedColumn()
@@ -25,6 +28,10 @@ export class Item {
 
   @OneToMany(() => Comment, (comment) => comment.item, { cascade: true })
   comments: Comment[];
+
+  @ManyToMany(() => Tag, { cascade: true })
+  @JoinTable()
+  tags: Tag[];
 
   constructor(item: Partial<Item>) {
     console.log('item ', item);
