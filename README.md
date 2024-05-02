@@ -24,6 +24,7 @@
 
 ## Description
 
+NestJS + TypeORM | Repositories, Relations, Transactions and Subscribers
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
