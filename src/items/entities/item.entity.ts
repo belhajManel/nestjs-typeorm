@@ -34,7 +34,6 @@ export class Item {
   tags: Tag[];
 
   constructor(item: Partial<Item>) {
-    console.log('item ', item);
     Object.assign(this, item);
   }
 }
